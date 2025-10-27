@@ -1,0 +1,68 @@
+# ───────────────────────────────
+# 🌐 Node.js / Express backend
+# ───────────────────────────────
+omnivion-backend/node_modules/
+omnivion-backend/.env
+omnivion-backend/uploads/
+omnivion-backend/seed/students.csv
+omnivion-backend/seed/cleaned_students.csv
+omnivion-backend/package-lock.json
+
+# Logs
+omnivion-backend/logs/
+omnivion-backend/*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build artifacts
+omnivion-backend/dist/
+omnivion-backend/.cache/
+omnivion-backend/.DS_Store
+
+# ───────────────────────────────
+# 🧠 Python ML microservice
+# ───────────────────────────────
+omnivion-ml/__pycache__/
+omnivion-ml/venv/
+omnivion-ml/.env
+omnivion-ml/*.pkl
+omnivion-ml/*.joblib
+omnivion-ml/*.csv
+omnivion-ml/*.log
+omnivion-ml/.DS_Store
+
+# ───────────────────────────────
+# 💻 React Frontend (if inside omnivion-frontend/)
+# ───────────────────────────────
+omnivion-frontend/node_modules/
+omnivion-frontend/.env
+omnivion-frontend/build/
+omnivion-frontend/.cache/
+omnivion-frontend/.DS_Store
+
+# ───────────────────────────────
+# 🔒 General
+# ───────────────────────────────
+.env
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+*.tmp
+*.swp
+
+# Ignore IDE configs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ───────────────────────────────
+# 🧰 Optional: Docker
+# ───────────────────────────────
+/docker-compose.yml
+*.pid
