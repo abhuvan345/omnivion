@@ -4,6 +4,11 @@ import { authorizeRoles } from "../middleware/roleMiddleware.js";
 import { uploadCSV } from "../controllers/uploadController.js";
 
 const router = express.Router();
-router.post("/", verifyToken, authorizeRoles("teacher"), uploadCSV);
+router.post(
+  "/",
+  verifyToken,
+  authorizeRoles("admin", "hod", "teacher"),
+  uploadCSV
+);
 
 export default router;

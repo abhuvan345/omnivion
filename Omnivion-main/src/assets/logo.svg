@@ -1,0 +1,26 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0%" stop-color="#4B0082"/>
+      <stop offset="100%" stop-color="#00CFFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="20" fill="url(#g)" opacity="0.08" />
+  <g transform="translate(12 12)" stroke="url(#g)" stroke-width="3" fill="none">
+    <!-- outer eye circle -->
+    <ellipse cx="48" cy="48" rx="36" ry="24" stroke-opacity="0.95"/>
+    <!-- iris -->
+    <circle cx="48" cy="48" r="12" fill="#0B1220" fill-opacity="0.9" stroke="none"/>
+    <!-- infinity subtle curve inside iris -->
+    <path d="M36 48c4-6 12-6 16 0s12 6 16 0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M36 48c4 6 12 6 16 0s12-6 16 0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -8)"/>
+    <!-- data nodes -->
+    <circle cx="18" cy="28" r="3" fill="#00CFFF" />
+    <circle cx="78" cy="20" r="3" fill="#4B0082" />
+    <circle cx="94" cy="56" r="3" fill="#00CFFF" />
+    <circle cx="64" cy="86" r="3" fill="#4B0082" />
+    <!-- connecting lines -->
+    <path d="M18 28 L36 44 L64 34 L78 20" stroke-opacity="0.6"/>
+    <path d="M64 34 L86 54 L94 56" stroke-opacity="0.6"/>
+  </g>
+</svg>

@@ -3,7 +3,7 @@ import path from "path";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import csv from "csv-parser";
-import Student from "../models/Student.js";
+import Student from "../models/Student2.js";
 import connectDB from "../utils/connectDB.js";
 
 dotenv.config();
@@ -28,6 +28,34 @@ const cleanValue = (val) => {
   return val;
 };
 
+// Convert one-hot encoded gender to numerical code
+const getGenderCode = (row) => {
+  if (parseFloat(row.gender_Female) === 1) return 0; // Female = 0
+  if (parseFloat(row.gender_Male) === 1) return 1; // Male = 1
+  if (parseFloat(row.gender_Other) === 1) return 2; // Other = 2
+  return null;
+};
+
+// Convert one-hot encoded department to numerical code
+const getDepartmentCode = (row) => {
+  if (parseFloat(row.department_ARTS) === 1) return 0;
+  if (parseFloat(row.department_BIOLOGY) === 1) return 1;
+  if (parseFloat(row.department_CIVIL) === 1) return 2;
+  if (parseFloat(row.department_COMMERCE) === 1) return 3;
+  if (parseFloat(row["department_COMPUTER SCIENCE"]) === 1) return 4;
+  if (parseFloat(row.department_ELECTRONICS) === 1) return 5;
+  if (parseFloat(row.department_MECHANICAL) === 1) return 6;
+  return null;
+};
+
+// Convert scholarship encoding to numerical code
+const getScholarshipCode = (row) => {
+  if (parseFloat(row.scholarship_encoded) === 0) return 0; // No scholarship
+  if (parseFloat(row.scholarship_encoded) === 1) return 1; // Partial scholarship
+  if (parseFloat(row.scholarship_encoded) === 2) return 2; // Yes scholarship
+  return null;
+};
+
 const numeric = (val) => {
   const v = parseFloat(val);
   return isNaN(v) ? null : v;
@@ -50,11 +78,11 @@ const seedStudents = async () => {
       .on("data", (row) => {
         const student = {
           student_id: cleanValue(row.student_id),
-          gender: cleanValue(row.gender),
-          department: cleanValue(row.department),
-          scholarship: cleanValue(row.scholarship),
-          parental_education: cleanValue(row.parental_education),
-          extra_curricular: cleanValue(row.extra_curricular),
+          gender: getGenderCode(row),
+          department: getDepartmentCode(row),
+          scholarship: getScholarshipCode(row),
+          parental_education: numeric(row.parental_education_encoded),
+          extra_curricular: numeric(row.extra_curricular_encoded),
           age: numeric(row.age),
           cgpa: numeric(row.cgpa),
           attendance_rate: numeric(row.attendance_rate),
@@ -64,7 +92,7 @@ const seedStudents = async () => {
           assignments_submitted: numeric(row.assignments_submitted),
           projects_completed: numeric(row.projects_completed),
           total_activities: numeric(row.total_activities),
-          sports_participation: cleanValue(row.sports_participation),
+          sports_participation: numeric(row.sports_participation_encoded),
           dropout: numeric(row.dropout),
         };
 

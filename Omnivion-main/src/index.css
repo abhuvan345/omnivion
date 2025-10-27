@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+@layer base {
+  body {
+    @apply transition-colors duration-300;
+    font-family: "Poppins", Inter, system-ui, sans-serif;
+    --omnivion-primary: #4B0082;
+    --omnivion-accent: #00CFFF;
+    --omnivion-bg-light: #F9FAFB;
+    --omnivion-bg-dark: #1E1E1E;
+  }
+}
+
+@layer utilities {
+  .glassmorphism {
+    @apply bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-[#4B0082] to-[#00CFFF] bg-clip-text text-transparent;
+  }
+
+  .glow-effect {
+    @apply shadow-lg shadow-[var(--omnivion-accent)/30] hover:shadow-xl hover:shadow-[var(--omnivion-accent)/50] transition-all duration-300;
+  }
+
+  .logo-gradient {
+    background: linear-gradient(90deg, var(--omnivion-primary) 0%, var(--omnivion-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
